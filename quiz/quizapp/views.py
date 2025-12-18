@@ -144,3 +144,7 @@ def leaderboard(request):
         .order_by('-total_score')[:10]  # Top 10
     )
     return render(request, "leaderboard.html", {"leaders": leaderboard_data})
+
+
+def about(request):
+    return render(request, "about.html")
