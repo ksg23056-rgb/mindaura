@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Quiz</title>
+    <style>
+        body {
+            background: #000;
+            color: #00fff7;
+            font-family: Arial;
+            padding: 40px;
+        }
+        .box {
+            max-width: 800px;
+            margin: auto;
+            background: #020617;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px #00fff7;
+        }
+        h2 { text-align: center; }
+        .q { margin: 20px 0; }
+        button {
+            padding: 12px 30px;
+            background: #00fff7;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 25px;
+        }
+
+                body {
+            background: #000;
+            color: #00fff7;
+            font-family: Arial;
+            padding: 40px;
+        }
+        .box {
+            max-width: 800px;
+            margin: auto;
+            background: #020617;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px #00fff7;
+        }
+        button {
+            padding: 12px 30px;
+            background: #00fff7;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 25px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="box">
+
+<h2>🤖 AI Quiz ({{ difficulty|title }})</h2>
+
+<form method="POST">
+{% csrf_token %}
+
+{% for q in questions %}
+<p><b>{{ forloop.counter }}. {{ q.question }}</b></p>
+
+{% for opt in q.options %}
+<input type="radio" name="q{{ forloop.parentloop.counter0 }}" value="{{ opt }}"> {{ opt }}<br>
+{% endfor %}
+<br>
+{% endfor %}
+
+<button type="submit">Submit Quiz</button>
+</form>
+
+</div>
+
+
+</div>
+</body>
+</html>
+
+

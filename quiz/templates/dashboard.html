@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body { background:#000; color:#00fff7; font-family:Arial; text-align:center; padding-top:50px; }
+        input, select, button { padding:10px; margin:10px; width:250px; border-radius:20px; border:none; }
+        button { cursor:pointer; background:#00fff7; color:#000; font-weight:bold; }
+    </style>
+</head>
+<body>
+    <h1>Welcome, {{ request.user.username }}!</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="topic" placeholder="Enter Topic (Python, AI, Cricket)" required><br>
+        <select name="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select><br>
+        <button type="submit">🚀 Start Quiz</button>
+    </form>
+    <br>
+    <a href="{% url 'history' %}">📜 View Quiz History</a><br>
+    <a href="{% url 'leaderboard' %}">🏆 View Leaderboard</a><br>
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>

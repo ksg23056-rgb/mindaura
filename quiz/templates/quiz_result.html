@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Result</title>
+    <style>
+        body { background:#000; color:#00fff7; font-family:Arial; text-align:center; padding:50px; }
+        a { color:#00fff7; text-decoration:none; font-weight:bold; }
+    </style>
+</head>
+<body>
+    <h1>Quiz Finished!</h1>
+    <h2>Your Score: {{ score }} / {{ total }}</h2>
+    <a href="{% url 'dashboard' %}">🏠 Back to Dashboard</a>
+</body>
+</html>

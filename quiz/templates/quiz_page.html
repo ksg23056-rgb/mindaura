@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+    <style>
+        body { font-family:Arial; background:#000; color:#00fff7; text-align:center; padding:50px; }
+        button { padding:10px 20px; margin-top:20px; border:none; border-radius:15px; background:#00fff7; color:#000; font-weight:bold; cursor:pointer;}
+    </style>
+</head>
+<body>
+    <h2>Question {{ current }} of {{ total }}</h2>
+    <h3>{{ question.question }}</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {% for opt in question.options %}
+            <label><input type="radio" name="option" value="{{ opt }}" required> {{ opt }}</label><br>
+        {% endfor %}
+        <button type="submit">Submit Answer</button>
+    </form>
+</body>
+</html>
