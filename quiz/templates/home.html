@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Quiz Home</title>
+    <title>Mindaura Home</title>
     <style>
         body {
             margin: 0;
-            height: 100vh;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             background: radial-gradient(circle at top, #020024, #000000);
-            overflow: hidden;
             font-family: 'Segoe UI', sans-serif;
             color: #00fff7;
         }
@@ -16,11 +17,14 @@
         /* Stars animation */
         body::before {
             content: "";
-            position: absolute;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 200%;
             height: 200%;
             background: url("https://i.imgur.com/7b1dKpN.png");
             animation: stars 60s linear infinite;
+            z-index: -1;
         }
 
         @keyframes stars {
@@ -28,14 +32,40 @@
             to { transform: translateY(-1000px); }
         }
 
-        .container {
-            position: relative;
-            z-index: 1;
+        /* Header and footer box style */
+        .box {
             text-align: center;
-            top: 35%;
+            padding: 20px 40px;
+            margin: 20px auto;
+            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(0,255,0,0.3), rgba(0,128,0,0.2));
+            border: 2px solid rgba(0,255,0,0.5);
+            backdrop-filter: blur(5px);
+            max-width: 90%;
         }
 
-        h1 {
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 0 0 10px #6a00ffff;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin: 5px 0 0;
+            color: #ffffffaa;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .container h1 {
             font-size: 3.5rem;
             text-shadow: 0 0 20px #6a00ffff;
             margin-bottom: 40px;
@@ -59,15 +89,32 @@
             color: #000;
             box-shadow: 0 0 40px #00fff7;
         }
+
+        footer {
+            margin-top: auto; /* Push footer to bottom */
+        }
+
+        footer p {
+            margin: 0;
+        }
     </style>
 </head>
 <body>
+
+<header class="box">
+    <h1>MINDAURA</h1>
+    <p>"Every day is a new opportunity to grow and shine!"</p>
+</header>
 
 <div class="container">
     <h1>🚀 Welcome to MINDAURA</h1>
     <a href="{% url 'signup' %}" class="btn">Sign Up</a>
     <a href="{% url 'signin' %}" class="btn">Sign In</a>
 </div>
+
+<footer class="box">
+    <p>&copy; 2025 Mindaura. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
