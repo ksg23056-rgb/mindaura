@@ -9,13 +9,24 @@
 </head>
 <body>
     <h2>Question {{ current }} of {{ total }}</h2>
-    <h3>{{ question.question }}</h3>
-    <form method="POST">
-        {% csrf_token %}
-        {% for opt in question.options %}
+    {% comment %} <h3>{{ question.question }}</h3>
+    <form method="POST"> {% endcomment %}
+        <form method="POST">
+    {% csrf_token %}
+    <p>{{ question.question }}</p>
+    <input type="radio" name="option" value="A" required> A) {{ question.options.0 }}<br>
+    <input type="radio" name="option" value="B"> B) {{ question.options.1 }}<br>
+    <input type="radio" name="option" value="C"> C) {{ question.options.2 }}<br>
+    <input type="radio" name="option" value="D"> D) {{ question.options.3 }}<br>
+    <button type="submit">Next</button>
+</form>
+
+        {% comment %} {% csrf_token %} {% endcomment %}
+
+        {% comment %} {% for opt in question.options %}
             <label><input type="radio" name="option" value="{{ opt }}" required> {{ opt }}</label><br>
         {% endfor %}
-        <button type="submit">Submit Answer</button>
-    </form>
+        <button type="submit">Submit Answer</button> {% endcomment %}
+    {% comment %} </form> {% endcomment %}
 </body>
 </html>

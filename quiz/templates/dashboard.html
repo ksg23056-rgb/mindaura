@@ -3,26 +3,97 @@
 <head>
     <title>Dashboard</title>
     <style>
-        body { background:#000; color:#00fff7; font-family:Arial; text-align:center; padding-top:50px; }
-        input, select, button { padding:10px; margin:10px; width:250px; border-radius:20px; border:none; }
-        button { cursor:pointer; background:#00fff7; color:#000; font-weight:bold; }
+        body {
+            margin: 0;
+            background: #000;
+            color: #00fff7;
+            font-family: Arial;
+            display: flex;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background: #2b2b2b;
+            padding-top: 40px;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+
+        .sidebar h2 {
+            color: #00fff7;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 15px 20px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+        .sidebar a:hover {
+            background: #00fff7;
+            color: #000;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 220px;
+            width: 100%;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        input, select, button {
+            padding: 10px;
+            margin: 10px;
+            width: 250px;
+            border-radius: 20px;
+            border: none;
+        }
+
+        button {
+            cursor: pointer;
+            background: #00fff7;
+            color: #000;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <h1>Welcome, {{ request.user.username }}!</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="topic" placeholder="Enter Topic (Python, AI, Cricket)" required><br>
-        <select name="difficulty">
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-        </select><br>
-        <button type="submit">🚀 Start Quiz</button>
-    </form>
-    <br>
-    <a href="{% url 'history' %}">📜 View Quiz History</a><br>
-    <a href="{% url 'leaderboard' %}">🏆 View Leaderboard</a><br>
-    <a href="{% url 'logout' %}">Logout</a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>QuizAura</h2>
+        
+        <a href="{% url 'leaderboard' %}">🏆 Leaderboard</a>
+        <a href="{% url 'logout' %}">🚪 Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Welcome, {{ request.user.username }}!</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="topic" placeholder="Enter Topic (Python, AI, Cricket)" required><br>
+
+            <select name="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select><br>
+
+            <button type="submit">🚀 Start Quiz</button>
+        </form>
+    </div>
+
 </body>
 </html>
